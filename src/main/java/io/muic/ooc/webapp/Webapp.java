@@ -24,7 +24,7 @@ public class Webapp {
 
         Context ctx;
         try {
-            ctx = tomcat.addWebapp("/", new File(docBase).getAbsolutePath());
+            ctx = tomcat.addWebapp("", new File(docBase).getAbsolutePath());
             servletRouter.init(ctx);
             tomcat.start();
             tomcat.getServer().await();
