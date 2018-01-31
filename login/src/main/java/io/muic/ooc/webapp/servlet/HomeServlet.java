@@ -21,7 +21,7 @@ public class HomeServlet extends HttpServlet {
 
     private SecurityService securityService;
 
-    public void setSecurityManager(SecurityService securityService) {
+    public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
     }
 

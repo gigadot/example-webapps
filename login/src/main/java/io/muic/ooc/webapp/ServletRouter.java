@@ -30,7 +30,7 @@ public class ServletRouter {
 
     private void initHome(Context ctx) {
         HomeServlet homeServlet = new HomeServlet();
-        //homeServlet.setSecurityManager(securityService);
+        homeServlet.setSecurityService(securityService);
         Tomcat.addServlet(ctx, "HomeServlet", homeServlet);
         ctx.addServletMapping("/index.jsp", "HomeServlet");
     }

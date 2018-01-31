@@ -20,19 +20,13 @@ public class Webapp {
         tomcat.setPort(8082);
 
         SecurityService securityService = new SecurityService();
+        ServletRouter servletRouter = new ServletRouter();
+        servletRouter.setSecurityService(securityService);
 
         Context ctx;
         try {
             ctx = tomcat.addWebapp("", docBase.getAbsolutePath());
-            LoginServlet loginServlet = new LoginServlet();
-            loginServlet.setSecurityService(securityService);
-            Tomcat.addServlet(ctx, "LoginServlet", loginServlet);
-            ctx.addServletMapping("/login", "LoginServlet");
-
-            HomeServlet homeServlet = new HomeServlet();
-            homeServlet.setSecurityManager(securityService);
-            Tomcat.addServlet(ctx, "HomeServlet", homeServlet);
-            ctx.addServletMapping("/index.jsp", "HomeServlet");
+            servletRouter.init(ctx);
 
             tomcat.start();
             tomcat.getServer().await();
