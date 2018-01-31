@@ -1,4 +1,4 @@
-/*.iml
-/target
-/.idea
-/tomcat.8082
+*.iml
+tomcat.8082
+target
+.idea
