@@ -5,6 +5,7 @@
  */
 package io.muic.ooc.webapp.servlet;
 
+import io.muic.ooc.webapp.Routeable;
 import io.muic.ooc.webapp.service.SecurityService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -17,10 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gigadot
  */
-public class HomeServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet implements Routeable {
 
     private SecurityService securityService;
 
+    @Override
+    public String getMapping() {
+        return "/index.jsp";
+    }
+
+    @Override
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
     }

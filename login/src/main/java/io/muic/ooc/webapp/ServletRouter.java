@@ -11,34 +11,43 @@ import io.muic.ooc.webapp.servlet.LoginServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 
+import javax.servlet.http.HttpServlet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author gigadot
  */
 public class ServletRouter {
-    
+
+    private static final List<Class<? extends Routeable>> routeables = new ArrayList<>();
+    static {
+        routeables.add(HomeServlet.class);
+        routeables.add(LoginServlet.class);
+    }
+
     private SecurityService securityService;
+
 
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
     }
 
     public void init(Context ctx) {
-        initHome(ctx);
-        initLogin(ctx);
+        for (Class<? extends Routeable> routeableClass: routeables) {
+            try {
+                Routeable routeable = routeableClass.newInstance();
+                routeable.setSecurityService(securityService);
+                String name = routeable.getClass().getSimpleName();
+                Tomcat.addServlet(ctx, name, (HttpServlet) routeable);
+                ctx.addServletMapping(routeable.getMapping(), name);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    private void initHome(Context ctx) {
-        HomeServlet homeServlet = new HomeServlet();
-        homeServlet.setSecurityService(securityService);
-        Tomcat.addServlet(ctx, "HomeServlet", homeServlet);
-        ctx.addServletMapping("/index.jsp", "HomeServlet");
-    }
-
-    private void initLogin(Context ctx) {
-        LoginServlet loginServlet = new LoginServlet();
-        loginServlet.setSecurityService(securityService);
-        Tomcat.addServlet(ctx, "LoginServlet", loginServlet);
-        ctx.addServletMapping("/login", "LoginServlet");
-    }
 }
