@@ -5,7 +5,7 @@
  */
 package io.muic.ooc.webapp.servlet;
 
-import io.muic.ooc.webapp.Routeable;
+import io.muic.ooc.webapp.Routable;
 import io.muic.ooc.webapp.service.SecurityService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gigadot
  */
-public class HomeServlet extends HttpServlet implements Routeable {
+public class HomeServlet extends HttpServlet implements Routable {
 
     private SecurityService securityService;
 

@@ -21,27 +21,27 @@ import java.util.List;
  */
 public class ServletRouter {
 
-    private static final List<Class<? extends Routeable>> routeables = new ArrayList<>();
+    private static final List<Class<? extends Routable>> routables = new ArrayList<>();
+
     static {
-        routeables.add(HomeServlet.class);
-        routeables.add(LoginServlet.class);
+        routables.add(HomeServlet.class);
+        routables.add(LoginServlet.class);
     }
 
     private SecurityService securityService;
-
 
     public void setSecurityService(SecurityService securityService) {
         this.securityService = securityService;
     }
 
     public void init(Context ctx) {
-        for (Class<? extends Routeable> routeableClass: routeables) {
+        for (Class<? extends Routable> routableClass : routables) {
             try {
-                Routeable routeable = routeableClass.newInstance();
-                routeable.setSecurityService(securityService);
-                String name = routeable.getClass().getSimpleName();
-                Tomcat.addServlet(ctx, name, (HttpServlet) routeable);
-                ctx.addServletMapping(routeable.getMapping(), name);
+                Routable routable = routableClass.newInstance();
+                routable.setSecurityService(securityService);
+                String name = routable.getClass().getSimpleName();
+                Tomcat.addServlet(ctx, name, (HttpServlet) routable);
+                ctx.addServletMapping(routable.getMapping(), name);
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
