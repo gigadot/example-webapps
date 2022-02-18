@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.muic.ooc.webapp.servlet;
+package io.muzoo.ssc.webapp.servlet;
 
-import io.muic.ooc.webapp.Routable;
-import io.muic.ooc.webapp.service.SecurityService;
+import io.muzoo.ssc.webapp.Routable;
+import io.muzoo.ssc.webapp.service.SecurityService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.muic.ooc.webapp</groupId>
+    <groupId>io.muzoo.ssc.webapp</groupId>
     <artifactId>jsp-webapp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>JSP Webapp</name>
@@ -9,8 +9,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tomcat.version>8.5.2</tomcat.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -65,7 +65,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>io.muic.ooc.webapp.Webapp</mainClass>
+                            <mainClass>io.muzoo.ssc.webapp.Webapp</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>

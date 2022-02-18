@@ -1,4 +1,4 @@
-package io.muic.ooc.webapp;
+package io.muzoo.ssc.webapp;
 
 public class User {
 

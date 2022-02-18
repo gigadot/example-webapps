@@ -1,4 +1,4 @@
-package io.muic.ooc.webapp;
+package io.muzoo.ssc.webapp;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;

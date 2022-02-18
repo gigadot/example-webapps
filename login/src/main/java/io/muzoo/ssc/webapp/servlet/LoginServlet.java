@@ -1,6 +1,6 @@
-package io.muic.ooc.webapp.servlet;
+package io.muzoo.ssc.webapp.servlet;
 
-import io.muic.ooc.webapp.service.SecurityService;
+import io.muzoo.ssc.webapp.service.SecurityService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
-import io.muic.ooc.webapp.Routable;
+import io.muzoo.ssc.webapp.Routable;
 
 public class LoginServlet extends HttpServlet implements Routable {
 

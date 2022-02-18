@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io.muic.ooc.webapp;
+package io.muzoo.ssc.webapp;
 
-import io.muic.ooc.webapp.servlet.HomeServlet;
-import io.muic.ooc.webapp.service.SecurityService;
-import io.muic.ooc.webapp.servlet.LoginServlet;
+import io.muzoo.ssc.webapp.servlet.HomeServlet;
+import io.muzoo.ssc.webapp.service.SecurityService;
+import io.muzoo.ssc.webapp.servlet.LoginServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 

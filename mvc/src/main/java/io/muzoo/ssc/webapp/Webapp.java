@@ -1,4 +1,4 @@
-package io.muic.ooc.webapp;
+package io.muzoo.ssc.webapp;
 
 import java.io.File;
 import javax.servlet.ServletException;
@@ -18,10 +18,6 @@ public class Webapp {
         Context ctx;
         try {
             ctx = tomcat.addWebapp("", docBase.getAbsolutePath());
-            AdminServlet adminServlet = new AdminServlet();
-            Tomcat.addServlet(ctx, "AdminServlet", adminServlet);
-            ctx.addServletMapping("/admin", "AdminServlet");
-
             HomeServlet homeServlet = new HomeServlet();
             Tomcat.addServlet(ctx, "HomeServlet", homeServlet);
             // TRICK: mapping with index.jsp, allow access to root path "/"
