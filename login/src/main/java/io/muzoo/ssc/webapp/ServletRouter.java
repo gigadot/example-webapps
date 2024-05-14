@@ -8,10 +8,10 @@ package io.muzoo.ssc.webapp;
 import io.muzoo.ssc.webapp.servlet.HomeServlet;
 import io.muzoo.ssc.webapp.service.SecurityService;
 import io.muzoo.ssc.webapp.servlet.LoginServlet;
+import jakarta.servlet.http.HttpServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 
-import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class ServletRouter {
                 routable.setSecurityService(securityService);
                 String name = routable.getClass().getSimpleName();
                 Tomcat.addServlet(ctx, name, (HttpServlet) routable);
-                ctx.addServletMapping(routable.getMapping(), name);
+                ctx.addServletMappingDecoded(routable.getMapping(), name);
             } catch (InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

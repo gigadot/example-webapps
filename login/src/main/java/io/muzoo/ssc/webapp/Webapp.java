@@ -1,36 +1,28 @@
 package io.muzoo.ssc.webapp;
 
-import java.io.File;
-import javax.servlet.ServletException;
-
+import io.muzoo.ssc.assignment.tracker.SscAssignment;
 import io.muzoo.ssc.webapp.service.SecurityService;
 import org.apache.catalina.Context;
-import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
-public class Webapp {
+public class Webapp extends SscAssignment {
 
-    public static void main(String[] args) {
-
-        File docBase = new File("src/main/webapp/");
-        docBase.mkdirs();
+    public static void main(String[] args) throws Exception {
+        TomcatEnvironment.init();
         Tomcat tomcat = new Tomcat();
+        tomcat.setBaseDir(TomcatEnvironment.getWorkDir().getAbsolutePath());
         tomcat.setPort(8082);
+        tomcat.getConnector();
 
         SecurityService securityService = new SecurityService();
         ServletRouter servletRouter = new ServletRouter();
         servletRouter.setSecurityService(securityService);
 
-        Context ctx;
-        try {
-            ctx = tomcat.addWebapp("", docBase.getAbsolutePath());
-            servletRouter.init(ctx);
+        Context ctx = tomcat.addWebapp("", TomcatEnvironment.getDocBase().getAbsolutePath());
 
-            tomcat.start();
-            tomcat.getServer().await();
-        } catch (ServletException | LifecycleException ex) {
-            ex.printStackTrace();
-        }
+        servletRouter.init(ctx);
 
+        tomcat.start();
+        tomcat.getServer().await();
     }
 }

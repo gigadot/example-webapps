@@ -8,7 +8,7 @@ String lastName = request.getParameter("lastName");
 if (firstName != null && lastName != null) {
     out.println("Hello, " + firstName + " " + lastName);
 } else {
-    out.println("firstName and lastName parameters not found");
+    out.println("firstName and lastName parameters not found.");
 }
 %>
 </body>

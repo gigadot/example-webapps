@@ -1,11 +1,12 @@
 package io.muzoo.ssc.webapp;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class HomeServlet extends HttpServlet {
 
@@ -20,7 +21,8 @@ public class HomeServlet extends HttpServlet {
         // Pass user model object
         request.setAttribute("user", u);
         // Render home page using WEB-INF/home.jsp and user model
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/home.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/home.jsp");
         rd.include(request, response);
+        request.getSession().removeAttribute("user");
     }
 }
