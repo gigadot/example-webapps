@@ -66,7 +66,7 @@
         <dependency>
             <groupId>io.muzoo.ssc</groupId>
             <artifactId>assignment-tracker</artifactId>
-            <version>1.1</version>
+            <version>1.5</version>
         </dependency>
     </dependencies>
     <build>
@@ -105,8 +105,8 @@
     </build>
     <repositories>
         <repository>
-            <id>m2.ssc.muzoo.io</id>
-            <url>https://m2.ssc.muzoo.io</url>
+            <id>m2.muzoo.io</id>
+            <url>https://m2.muzoo.io</url>
         </repository>
     </repositories>
 </project>
